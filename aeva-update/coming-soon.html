@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coming soon | AEVA</title>
+<meta name="description" content="AEVA&#x27;s social channels are coming soon.">
+<meta name="robots" content="noindex, follow">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <section class="soon">
+    <div class="icon" id="cs-icon"></div>
+    <span class="label gold" id="cs-label">AEVA</span>
+    <h1 style="margin-top:20px">Coming soon</h1>
+    <span class="tag-rule" aria-hidden="true"></span>
+    <p id="cs-text">We're putting the finishing touches on this channel.<br class="cs-br"> In the meantime, come say hello on Instagram.</p>
+    <div class="actions">
+      <a href="https://instagram.com/aevacarpentry" target="_blank" rel="noopener" class="btn solid">Follow @aevacarpentry</a>
+      <a href="index.html" class="btn">Back to home</a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="projects.js"></script>
+<script src="main.js"></script>
+<script>
+AEVA.ready.push(() => {
+  const names = { tiktok: "TikTok", youtube: "YouTube", facebook: "Facebook" };
+  const k = new URLSearchParams(location.search).get("p");
+  if (names[k]) {
+    document.getElementById("cs-label").textContent = "AEVA on " + names[k];
+    document.getElementById("cs-icon").innerHTML = ICONS[k];
+    document.title = `${names[k]} coming soon | AEVA`;
+  }
+});
+</script>
+</body>
+</html>
