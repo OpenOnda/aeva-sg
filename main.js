@@ -378,7 +378,7 @@ function animate() {
   const tag = $("[data-tag]");
   let tagChars = [];
   if (tag) {
-    tag.innerHTML = tag.textContent.split(" ").map((w) => `<span class="tw">${w.split("").map((ch) => `<span class="ch" aria-hidden="true">${ch}</span>`).join("")}</span>`).join(`<span class="sp"> </span>`);
+    tag.innerHTML = tag.textContent.split(" ").map((w) => `<span class="tw">${w.split("").map((ch) => `<span class="ch" aria-hidden="true">${ch}</span>`).join("")}</span>`).join(" ");
     tagChars = $$(".ch", tag);
     gsap.set(tagChars, { opacity: 0, y: 18, filter: "blur(8px)" });
     gsap.set(".tag-rule", { scaleX: 0 });
@@ -401,7 +401,7 @@ function animate() {
       // A soft gold shimmer that travels through the letters every few seconds
       gsap.to(tagChars, { color: "#d9b878", textShadow: "0 0 18px rgba(217,184,120,.45)", duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 1, stagger: { each: 0.07, repeat: -1, repeatDelay: 4 }, delay: t + 2.6 });
       // Slow breathing in the letter spacing
-      if (innerWidth > 860) gsap.fromTo(tag, { letterSpacing: "0.62em", paddingLeft: "0.62em" }, { letterSpacing: "0.7em", paddingLeft: "0.7em", duration: 6, ease: "sine.inOut", yoyo: true, repeat: -1, delay: t + 2.4 });
+      if (innerWidth > 860) gsap.fromTo(tag, { letterSpacing: "0.62em" }, { letterSpacing: "0.7em", duration: 6, ease: "sine.inOut", yoyo: true, repeat: -1, delay: t + 2.4 });
       gsap.from(".hero-min .scroll, .hero-min .socials-mobile", { opacity: 0, duration: 1.5, delay: t + 1.6 });
     }
     heroWords.forEach((w, i) => gsap.to(w, { yPercent: 0, duration: 1.6, ease: "expo.out", stagger: 0.05, delay: 0.1 + i * 0.12 }));

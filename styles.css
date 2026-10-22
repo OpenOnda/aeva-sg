@@ -155,11 +155,11 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:900
 .hero-glow{position:absolute;left:50%;top:50%;width:70vw;height:70vw;max-width:900px;max-height:900px;transform:translate(-50%,-50%);border-radius:50%;
   background:radial-gradient(circle,rgba(214,170,110,.13),transparent 62%);animation:breathe 9s ease-in-out infinite;pointer-events:none}
 @keyframes breathe{50%{transform:translate(-50%,-50%) scale(1.12);opacity:.65}}
-.tag{position:relative;font-family:var(--sans);font-weight:300;font-size:clamp(1.05rem,2.4vw,2.1rem);line-height:1.4;letter-spacing:.62em;text-transform:uppercase;color:var(--cream);text-align:center;width:100%;padding-left:.62em}
+.tag{position:relative;font-family:var(--sans);font-weight:300;font-size:clamp(1.05rem,2.4vw,2.1rem);line-height:1.4;letter-spacing:.62em;text-transform:uppercase;color:var(--cream);text-align:center;width:100%;word-spacing:.3em}
 .tag .ch{display:inline-block}
 .tag .tw{display:inline-block;white-space:nowrap}
-.tag .sp{display:inline-block;width:.9em}
-@media(max-width:860px){.tag{font-size:1.15rem;letter-spacing:.42em;padding-left:.42em;line-height:2}}
+.tag .tw .ch:last-child{letter-spacing:0}
+@media(max-width:860px){.tag{font-size:1.15rem;letter-spacing:.42em;line-height:2.1;padding:0 8vw}}
 .tag-rule{position:relative;display:block;width:90px;height:1px;margin:34px auto 0;background:var(--gold-grad);transform-origin:center}
 
 /* Tagline marquee */
@@ -412,7 +412,7 @@ form{display:grid;gap:30px}
 @media(max-width:860px){.social-rail{display:none}}
 .site-foot .socials a,.menu aside .socials a{width:22px;height:22px}
 .hero-min .socials-mobile{display:none}
-@media(max-width:860px){.hero-min .socials-mobile{display:flex;position:absolute;bottom:110px;left:50%;transform:translateX(-50%)}}
+@media(max-width:860px){.hero-min .socials-mobile{display:flex;position:absolute;bottom:clamp(150px,20vh,190px);left:50%;transform:translateX(-50%);gap:26px}.hero-min .scroll{bottom:28px}.hero-min .scroll i{height:36px}}
 
 /* Founder's message */
 .founder{display:grid;grid-template-columns:4fr 6fr;gap:6vw;align-items:center;padding:16vh var(--pad);border-top:1px solid var(--line)}
