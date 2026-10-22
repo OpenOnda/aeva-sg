@@ -336,9 +336,10 @@ form{display:grid;gap:30px}
 .pair .ph{aspect-ratio:4/5}
 .pair .ph:last-child{margin-top:20vh}
 .scope{padding:18vh var(--pad);display:grid;grid-template-columns:1fr 2fr;gap:6vw}
-.scope ul{list-style:none;border-top:1px solid var(--line)}
-.scope li{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2.4rem);color:var(--cream);padding:18px 0;border-bottom:1px solid var(--line);display:flex;gap:24px;align-items:baseline}
-.scope li .num{font-size:1rem}
+.scope ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;align-content:start;cursor:default}
+.scope li{font-family:var(--sans);font-weight:300;font-size:1.05rem;color:var(--text);display:flex;gap:16px;align-items:baseline;line-height:1.5}
+.scope li .num{font-size:.8rem;color:var(--gold);min-width:1.6em}
+@media(max-width:860px){.scope ul{grid-template-columns:1fr}}
 .next{display:block;position:relative;height:90vh;overflow:hidden}
 .next .ph{position:absolute;inset:0;opacity:.55;transition:opacity .8s}
 .next:hover .ph{opacity:.8}
