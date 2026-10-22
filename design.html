@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design | AEVA Interior Design Singapore</title>
+<meta name="description" content="An AEVA home: the story, the carpentry and the details.">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="images/logo.svg">
+<link rel="alternate" hreflang="zh" href="zh/design.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <section class="proj-hero">
+    <div class="phero" style="padding:0 0 4vh"><div class="top"><a href="designs.html" class="link">All designs <span class="arr"></span></a><span class="label" id="p-loc"></span></div></div>
+    <h1 data-split="hero" id="p-title"></h1>
+    <div class="facts" id="p-facts"></div>
+  </section>
+
+  <figure class="full"><div class="ph" id="p-img1"><i></i></div></figure>
+
+  <section class="story">
+    <span class="label gold">The idea</span>
+    <div>
+      <p class="big" data-scrub id="p-summary"></p>
+      <p style="margin-top:6vh;max-width:40em" data-fade id="p-story"></p>
+    </div>
+  </section>
+
+  <section class="pair">
+    <div class="ph" data-reveal data-speed=".08" id="p-img2"><i></i></div>
+    <div class="ph" data-reveal data-speed="-.08" id="p-img3"><i></i></div>
+  </section>
+
+  <section class="scope">
+    <span class="label gold">What we'd build</span>
+    <ul id="p-scope"></ul>
+  </section>
+
+  <section class="contact" style="padding-top:4vh">
+    <h2 data-split>Want this <span class="gold-txt">in your home?</span></h2>
+    <a href="#" data-wa-design class="btn solid">WhatsApp us about this design</a>
+  </section>
+
+  <a class="next" id="p-next" data-cursor="Next">
+    <div class="ph"><i></i></div>
+    <div class="in"><span class="label">Next design</span><h2 id="p-next-title"></h2></div>
+  </a>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="projects.js"></script>
+<script src="main.js"></script>
+<script>
+AEVA.ready.push(() => {
+  const slug = new URLSearchParams(location.search).get("d");
+  const i = Math.max(0, PROJECTS.findIndex((x) => x.slug === slug));
+  const p = PROJECTS[i], n = PROJECTS[(i + 1) % PROJECTS.length];
+  const img = (s, k) => `url('images/projects/${s}-${k}.jpg')`;
+  document.title = `${p.title} | AEVA Interior Design Singapore`;
+  document.querySelector('meta[name="description"]').content = p.summary;
+  document.getElementById("p-title").textContent = p.title;
+  document.getElementById("p-loc").textContent = p.space;
+  document.getElementById("p-facts").innerHTML = `
+    <div><span>Space</span><b>${p.space}</b></div>
+    <div><span>Ideal for</span><b>${p.suits}</b></div>
+    <div><span>Materials</span><b>${p.style}</b></div>
+    <div><span>Typical build</span><b>${p.build}</b></div>`;
+  document.getElementById("p-summary").textContent = p.summary;
+  document.getElementById("p-story").textContent = p.story;
+  ["p-img1", "p-img2", "p-img3"].forEach((id, k) => document.querySelector(`#${id} i`).style.setProperty("--img", img(p.slug, k + 1)));
+  document.getElementById("p-scope").innerHTML = p.scope.map((s, k) => `<li><span class="num">0${k + 1}</span>${s}</li>`).join("");
+  const nx = document.getElementById("p-next");
+  document.querySelectorAll("[data-wa-design]").forEach((a) => { a.href = `https://wa.me/6580405577?text=${encodeURIComponent(`Hi AEVA, I like "${p.title}" and I'd like to find out more...`)}`; a.target = "_blank"; a.rel = "noopener"; });
+  nx.href = `design.html?d=${n.slug}`;
+  nx.querySelector("i").style.setProperty("--img", img(n.slug, 1));
+  document.getElementById("p-next-title").textContent = n.title;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designs | AEVA Interior Design Singapore</title>
+<meta name="description" content="Explore AEVA design concepts: kids' rooms, nurseries, living rooms, kitchens and studies, all designed and built by hand in our own workshop.">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="images/logo.svg">
+<link rel="alternate" hreflang="zh" href="zh/designs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <section class="phero">
+    <div class="top"><span class="label">Designs</span><span class="label" id="count"></span></div>
+    <h1 data-split="hero">Designs, <em>made to be lived in</em>.</h1>
+    <p class="lead" data-fade>A look at what we can design and build for your family. Every concept can be tailored to your layout, your budget and the way you live.</p>
+  </section>
+
+  <div class="workbar">
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="kids">Kids' spaces</button>
+      <button data-f="carpentry">Carpentry</button>
+      <button data-f="hdb">HDB</button>
+      <button data-f="condo">Condo</button>
+      <button data-f="landed">Landed</button>
+    </div>
+    <div class="toggle" role="tablist">
+      <button class="on" data-view="featured">Featured</button>
+      <button data-view="index">Index</button>
+    </div>
+  </div>
+
+  <section class="featured" id="featured"></section>
+  <section class="sec hide" id="indexwrap" style="padding-top:0"><div class="index" id="index"></div></section>
+
+  <section class="contact" style="padding-top:6vh">
+    <h2 data-split>Like what you see?<br><span class="gold-txt">Let's make it yours</span></h2>
+    <a href="contact.html" class="btn solid">Start a conversation</a>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="projects.js"></script>
+<script src="main.js"></script>
+<script>
+AEVA.ready.push(() => {
+  const f = document.getElementById("featured"), ix = document.getElementById("index");
+  document.getElementById("count").textContent = String(PROJECTS.length).padStart(2, "0") + " designs";
+  f.innerHTML = PROJECTS.map((p) => `
+    <a class="fcard" href="design.html?d=${p.slug}" data-tags="${p.tags.join(" ")}" data-cursor="View">
+      <div class="ph" data-reveal><i style="--img:url('images/projects/${p.slug}-1.jpg')"></i></div>
+      <div class="meta"><h3>${p.title}</h3><span class="label">${p.space}</span></div>
+      <p>${p.summary}</p>
+    </a>`).join("");
+  ix.innerHTML = PROJECTS.map((p, i) => `
+    <a class="irow" href="design.html?d=${p.slug}" data-tags="${p.tags.join(" ")}">
+      <span class="num">0${i + 1}</span><h3>${p.title}</h3>
+      <span class="c">${p.space}</span><span class="c">${p.suits}</span><span class="c">${p.build}</span><span class="go"></span>
+    </a>`).join("");
+
+  document.querySelectorAll("#filters button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("#filters button").forEach((x) => x.classList.toggle("on", x === b));
+    const t = b.dataset.f;
+    document.querySelectorAll(".fcard,.irow").forEach((c) => c.classList.toggle("hide", t !== "all" && !c.dataset.tags.split(" ").includes(t)));
+    window.ScrollTrigger && ScrollTrigger.refresh();
+  }));
+  document.querySelectorAll("[data-view]").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-view]").forEach((x) => x.classList.toggle("on", x === b));
+    const idx = b.dataset.view === "index";
+    f.classList.toggle("hide", idx);
+    document.getElementById("indexwrap").classList.toggle("hide", !idx);
+    window.ScrollTrigger && ScrollTrigger.refresh();
+  }));
+});
+</script>
+</body>
+</html>

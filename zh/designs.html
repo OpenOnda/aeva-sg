@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>设计 | AEVA 新加坡室内设计</title>
+<meta name="description" content="探索 AEVA 的设计概念：儿童房、婴儿房、客厅、厨房与书房，全部在自家工坊亲手设计与打造。">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="../images/logo.svg">
+<link rel="alternate" hreflang="en" href="../designs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<main>
+  <section class="phero">
+    <div class="top"><span class="label">设计</span><span class="label" id="count"></span></div>
+    <h1 data-split="hero">设计，<em>为生活而生</em>。</h1>
+    <p class="lead" data-fade>看看我们能为你的家庭设计和打造什么。每个概念都可以根据你的格局、预算和生活方式量身调整。</p>
+  </section>
+
+  <div class="workbar">
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">全部</button>
+      <button data-f="kids">儿童空间</button>
+      <button data-f="carpentry">木工</button>
+      <button data-f="hdb">组屋</button>
+      <button data-f="condo">公寓</button>
+      <button data-f="landed">有地住宅</button>
+    </div>
+    <div class="toggle" role="tablist">
+      <button class="on" data-view="featured">精选</button>
+      <button data-view="index">索引</button>
+    </div>
+  </div>
+
+  <section class="featured" id="featured"></section>
+  <section class="sec hide" id="indexwrap" style="padding-top:0"><div class="index" id="index"></div></section>
+
+  <section class="contact" style="padding-top:6vh">
+    <h2 data-split>喜欢吗？<br><span class="gold-txt">让它成为你的家</span></h2>
+    <a href="contact.html" class="btn solid">开始对话</a>
+  </section>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="../vendor/lenis.min.js"></script>
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../projects-zh.js"></script>
+<script src="../main.js"></script>
+<script>
+AEVA.ready.push(() => {
+  const f = document.getElementById("featured"), ix = document.getElementById("index");
+  document.getElementById("count").textContent = String(PROJECTS.length).padStart(2, "0") + " 个设计";
+  f.innerHTML = PROJECTS.map((p) => `
+    <a class="fcard" href="design.html?d=${p.slug}" data-tags="${p.tags.join(" ")}" data-cursor="查看">
+      <div class="ph" data-reveal><i style="--img:url('../images/projects/${p.slug}-1.jpg')"></i></div>
+      <div class="meta"><h3>${p.title}</h3><span class="label">${p.space}</span></div>
+      <p>${p.summary}</p>
+    </a>`).join("");
+  ix.innerHTML = PROJECTS.map((p, i) => `
+    <a class="irow" href="design.html?d=${p.slug}" data-tags="${p.tags.join(" ")}">
+      <span class="num">0${i + 1}</span><h3>${p.title}</h3>
+      <span class="c">${p.space}</span><span class="c">${p.suits}</span><span class="c">${p.build}</span><span class="go"></span>
+    </a>`).join("");
+
+  document.querySelectorAll("#filters button").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("#filters button").forEach((x) => x.classList.toggle("on", x === b));
+    const t = b.dataset.f;
+    document.querySelectorAll(".fcard,.irow").forEach((c) => c.classList.toggle("hide", t !== "all" && !c.dataset.tags.split(" ").includes(t)));
+    window.ScrollTrigger && ScrollTrigger.refresh();
+  }));
+  document.querySelectorAll("[data-view]").forEach((b) => b.addEventListener("click", () => {
+    document.querySelectorAll("[data-view]").forEach((x) => x.classList.toggle("on", x === b));
+    const idx = b.dataset.view === "index";
+    f.classList.toggle("hide", idx);
+    document.getElementById("indexwrap").classList.toggle("hide", !idx);
+    window.ScrollTrigger && ScrollTrigger.refresh();
+  }));
+});
+</script>
+</body>
+</html>

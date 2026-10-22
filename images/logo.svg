@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 110" role="img" aria-label="AEVA, Built for Generations">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2c27a"/>
+      <stop offset=".5" stop-color="#b8892f"/>
+      <stop offset="1" stop-color="#7a5a1e"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-width="7" stroke-linecap="butt" stroke-linejoin="miter">
+    <polyline points="12,72 46,6 80,72" stroke="url(#g)"/>
+    <g stroke="#141414"><line x1="124" y1="9" x2="178" y2="9"/><line x1="128" y1="39" x2="174" y2="39"/><line x1="124" y1="69" x2="178" y2="69"/></g>
+    <polyline points="222,6 256,72 290,6" stroke="#141414"/>
+    <polyline points="320,72 354,6 388,72" stroke="url(#g)"/>
+  </g>
+  <text x="200" y="102" text-anchor="middle" font-family="Jost, Arial, sans-serif" font-size="13" letter-spacing="7.5" fill="#141414">BUILT FOR GENERATIONS</text>
+</svg>

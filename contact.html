@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | AEVA Interior Design Singapore</title>
+<meta name="description" content="Book a free consult with AEVA. Tell us about your home and family and we will get back within one working day.">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="images/logo.svg">
+<link rel="alternate" hreflang="zh" href="zh/contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<main>
+  <section class="contact" style="padding-top:28vh">
+    <div class="phero" style="padding:0 0 6vh"><div class="top"><span class="label">Contact</span><span class="label">Reply within one working day</span></div></div>
+    <h2 data-split="hero">Got a home in mind?<br><span class="gold-txt">Come talk to us</span></h2>
+    <div class="cgrid">
+      <div class="side">
+        <div><span class="label">WhatsApp</span><br><a data-site="whatsappLink" href="#"></a></div>
+        <div><span class="label">Email</span><br><a data-site="emailLink" href="#"></a></div>
+        <div><span class="label">Showroom</span><br><span data-site="address"></span><br><a href="#" class="link" data-maps style="margin-top:14px">Get directions <span class="arr"></span></a></div>
+        <div><span class="label">Hours</span><br><span data-site="hours"></span><br><span class="hol" data-site="holidays"></span></div>
+      </div>
+      <form name="enquiry" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enquiry">
+        <input type="hidden" name="language" value="English">
+        <p hidden><label>Leave blank <input name="bot-field"></label></p>
+        <div class="field"><label for="m">Tell us about your home and family</label><textarea id="m" name="message" placeholder="Who lives there, how old are the kids, what's not working right now?"></textarea></div>
+        <div class="f2">
+          <div class="field"><label for="n">Name</label><input id="n" name="name" required></div>
+          <div class="field"><label for="p">Mobile</label><input id="p" name="phone" type="tel" required></div>
+        </div>
+        <div class="f2">
+          <div class="field"><label for="e">Email</label><input id="e" name="email" type="email"></div>
+          <div class="field"><label for="t">Property</label>
+            <select id="t" name="property"><option value="">Choose one</option><option>HDB BTO</option><option>HDB Resale</option><option>Condominium</option><option>Landed</option><option>Commercial</option></select></div>
+        </div>
+        <div class="f2">
+          <div class="field"><label for="s">Scope</label>
+            <select id="s" name="scope"><option value="">Choose one</option><option>Full home renovation</option><option>Kids' room or nursery</option><option>Carpentry only</option><option>Lighting upgrade</option><option>Furniture sourcing (incl. Taobao)</option><option>Not sure yet</option></select></div>
+          <div class="field"><label for="b">Rough budget</label>
+            <select id="b" name="budget"><option value="">Choose one</option><option>Below $20k</option><option>$20k to $40k</option><option>$40k to $70k</option><option>$70k to $120k</option><option>Above $120k</option></select></div>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required> I'm happy for AEVA to contact me about my enquiry.</label>
+        <div><button type="submit" class="btn solid">Send message</button></div>
+      </form>
+    </div>
+  </section>
+
+  <figure class="full" style="height:80vh"><div class="ph"><i style="--img:url('images/showroom.jpg')"></i></div></figure>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="vendor/lenis.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="projects.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

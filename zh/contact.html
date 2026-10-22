@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>联系我们 | AEVA 新加坡室内设计</title>
+<meta name="description" content="预约 AEVA 免费咨询。告诉我们你的家和家人，我们会在一个工作日内回复。">
+<meta name="theme-color" content="#13100d">
+<link rel="icon" href="../images/logo.svg">
+<link rel="alternate" hreflang="en" href="../contact.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<main>
+  <section class="contact" style="padding-top:28vh">
+    <div class="phero" style="padding:0 0 6vh"><div class="top"><span class="label">联系我们</span><span class="label">一个工作日内回复</span></div></div>
+    <h2 data-split="hero">心中有理想的家？<br><span class="gold-txt">来和我们聊聊</span></h2>
+    <div class="cgrid">
+      <div class="side">
+        <div><span class="label">WhatsApp</span><br><a data-site="whatsappLink" href="#"></a></div>
+        <div><span class="label">电邮</span><br><a data-site="emailLink" href="#"></a></div>
+        <div><span class="label">展厅</span><br><span data-site="address"></span><br><a href="#" class="link" data-maps style="margin-top:14px">获取路线 <span class="arr"></span></a></div>
+        <div><span class="label">营业时间</span><br><span data-site="hours"></span><br><span class="hol" data-site="holidays"></span></div>
+      </div>
+      <form name="enquiry" method="POST" action="thank-you.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="enquiry">
+        <input type="hidden" name="language" value="中文">
+        <p hidden><label>请留空 <input name="bot-field"></label></p>
+        <div class="field"><label for="m">告诉我们你的家和家人</label><textarea id="m" name="message" placeholder="家里住着谁？孩子多大了？现在有哪些地方不顺心？"></textarea></div>
+        <div class="f2">
+          <div class="field"><label for="n">姓名</label><input id="n" name="name" required></div>
+          <div class="field"><label for="p">手机号码</label><input id="p" name="phone" type="tel" required></div>
+        </div>
+        <div class="f2">
+          <div class="field"><label for="e">电邮</label><input id="e" name="email" type="email"></div>
+          <div class="field"><label for="t">房屋类型</label>
+            <select id="t" name="property"><option value="">请选择</option><option>预购组屋 (BTO)</option><option>转售组屋</option><option>公寓</option><option>有地住宅</option><option>商业空间</option></select></div>
+        </div>
+        <div class="f2">
+          <div class="field"><label for="s">工程范围</label>
+            <select id="s" name="scope"><option value="">请选择</option><option>全屋装修</option><option>儿童房或婴儿房</option><option>只做木工</option><option>灯光升级</option><option>家具采购（包括淘宝）</option><option>还不确定</option></select></div>
+          <div class="field"><label for="b">大概预算</label>
+            <select id="b" name="budget"><option value="">请选择</option><option>$20k 以下</option><option>$20k 至 $40k</option><option>$40k 至 $70k</option><option>$70k 至 $120k</option><option>$120k 以上</option></select></div>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required> 我同意 AEVA 就我的咨询与我联系。</label>
+        <div><button type="submit" class="btn solid">发送信息</button></div>
+      </form>
+    </div>
+  </section>
+
+  <figure class="full" style="height:80vh"><div class="ph"><i style="--img:url('../images/showroom.jpg')"></i></div></figure>
+</main>
+
+<footer id="site-footer"></footer>
+
+<script src="../vendor/lenis.min.js"></script>
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../projects-zh.js"></script>
+<script src="../main.js"></script>
+</body>
+</html>
