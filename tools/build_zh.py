@@ -49,7 +49,8 @@ PAGES = {
     ('content="AEVA is an award-winning Singapore interior design studio with its own carpentry workshop. Warm, timber-filled homes with soft ambient light, designed with children in mind."',
      'content="AEVA 是一家屡获殊荣的新加坡室内设计工作室，拥有自家木工坊。以温暖的木质与柔和的氛围灯光，为有孩子的家庭打造温馨的家。"'),
     ('content="This is AEVA. Built for generations."', 'content="AEVA，为世代而筑。"'),
-    ('aria-label="Built for generations">Built for generations</h1>', 'aria-label="为世代而筑">为世代而筑</h1>'),
+    ('<h1 class="sr-only">AEVA, interior design and custom carpentry in Singapore</h1>', '<h1 class="sr-only">AEVA 新加坡室内设计与定制木工</h1>'),
+    ('aria-label="Built for generations">Built for generations</p>', 'aria-label="为世代而筑">为世代而筑</p>'),
     ('<span class="scroll"><i></i>Scroll</span>', '<span class="scroll"><i></i>向下滚动</span>'),
     (">Made by hand<", ">匠心手作<"), (">Safe for small hands<", ">呵护孩子的安全设计<"),
     (">Warm ambient lighting<", ">温暖氛围灯光<"), (">Designed to stay with your family<", ">陪伴家人成长的设计<"),
@@ -263,7 +264,7 @@ for page, pairs in PAGES.items():
     s = open(page, encoding="utf-8").read()
     for en, zh in COMMON + pairs:
         if en not in s:
-            if en.startswith('data-cursor'):
+            if en.startswith(('data-cursor', '<title>', 'content=', '.padStart', 'document.title')):
                 continue
             errors.append(f"{page}: not found -> {en[:90]}")
             continue

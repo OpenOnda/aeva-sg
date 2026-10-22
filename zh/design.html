@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>设计 | AEVA 新加坡室内设计</title>
-<meta name="description" content="AEVA 的设计：理念、木工与细节。">
+<title>设计 | AEVA</title>
+<meta name="description" content="AEVA 设计。">
+<meta name="robots" content="noindex, follow">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
 <meta name="theme-color" content="#13100d">
 <link rel="icon" href="../images/logo.svg">
-<link rel="alternate" hreflang="en" href="../design.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Noto+Sans+SC:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -62,12 +63,12 @@
 <script src="../main.js"></script>
 <script>
 AEVA.ready.push(() => {
-  const slug = new URLSearchParams(location.search).get("d");
+  const q = new URLSearchParams(location.search).get("d");
+  const slug = document.body.dataset.slug || q;
+  if (!document.body.dataset.slug) { location.replace(q ? `design-${q}.html` : "designs.html"); return; }
   const i = Math.max(0, PROJECTS.findIndex((x) => x.slug === slug));
   const p = PROJECTS[i], n = PROJECTS[(i + 1) % PROJECTS.length];
   const img = (s, k) => `url('../images/projects/${s}-${k}.jpg')`;
-  document.title = `${p.title} | AEVA 新加坡室内设计`;
-  document.querySelector('meta[name="description"]').content = p.summary;
   document.getElementById("p-title").textContent = p.title;
   document.getElementById("p-loc").textContent = p.space;
   document.getElementById("p-facts").innerHTML = `
@@ -81,7 +82,7 @@ AEVA.ready.push(() => {
   document.getElementById("p-scope").innerHTML = p.scope.map((s, k) => `<li><span class="num">0${k + 1}</span>${s}</li>`).join("");
   const nx = document.getElementById("p-next");
   document.querySelectorAll("[data-wa-design]").forEach((a) => { a.href = `https://wa.me/6580405577?text=${encodeURIComponent(`你好 AEVA，我喜欢「${p.title}」这个设计，想了解更多...`)}`; a.target = "_blank"; a.rel = "noopener"; });
-  nx.href = `design.html?d=${n.slug}`;
+  nx.href = `design-${n.slug}.html`;
   nx.querySelector("i").style.setProperty("--img", img(n.slug, 1));
   document.getElementById("p-next-title").textContent = n.title;
 });
