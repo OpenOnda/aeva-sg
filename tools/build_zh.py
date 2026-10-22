@@ -180,7 +180,7 @@ PAGES = {
     ('content="Explore AEVA design concepts: kids\' rooms, nurseries, living rooms, kitchens and studies, all designed and built by hand in our own workshop."',
      'content="探索 AEVA 的设计概念：儿童房、婴儿房、客厅、厨房与书房，全部在自家工坊亲手设计与打造。"'),
     ('<span class="label">Designs</span>', '<span class="label">设计</span>'),
-    ("Designs, <em>made to be lived in</em>.", "设计，<em>为生活而生</em>。"),
+    ("Designs,<br> <em>made to be lived in</em>.", "设计，<br><em>为生活而生</em>。"),
     ("A look at what we can design and build for your family. Every concept can be tailored to your layout, your budget and the way you live.",
      "看看我们能为你的家庭设计和打造什么。每个概念都可以根据你的格局、预算和生活方式量身调整。"),
     ('data-f="all">All</button>', 'data-f="all">全部</button>'),
