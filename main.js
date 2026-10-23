@@ -340,11 +340,25 @@ function animate() {
   });
 
   // Expanding showroom image
-  $$(".expand").forEach((sec) => {
-    const tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: "top top", end: "+=140%", scrub: 1, pin: true } });
-    tl.to($(".ph", sec), { clipPath: "inset(0% 0% 0% 0%)", ease: "none" })
-      .from($(".ph i", sec), { scale: 1.25, ease: "none" }, 0)
-      .to($(".over", sec), { opacity: 1, ease: "none", duration: 0.35 }, 0.7);
+  ScrollTrigger.config({ ignoreMobileResize: true });
+  ScrollTrigger.matchMedia({
+    "(min-width: 861px)": () => {
+      $$(".expand").forEach((sec) => {
+        const tl = gsap.timeline({ scrollTrigger: { trigger: sec, start: "top top", end: "+=140%", scrub: 1, pin: true } });
+        tl.fromTo($(".ph", sec), { clipPath: "inset(22% 30% 22% 30%)" }, { clipPath: "inset(0% 0% 0% 0%)", ease: "none" })
+          .fromTo($(".ph i", sec), { scale: 1.25 }, { scale: 1, ease: "none" }, 0)
+          .to($(".over", sec), { opacity: 1, ease: "none", duration: 0.35 }, 0.7);
+      });
+    },
+    "(max-width: 860px)": () => {
+      // Mobile: no pinning, a gentle open as the photo scrolls into view
+      $$(".expand").forEach((sec) => {
+        const st = { trigger: sec, start: "top 95%", end: "top 15%", scrub: 1.4 };
+        gsap.fromTo($(".ph", sec), { clipPath: "inset(10% 9% 10% 9% round 6px)" }, { clipPath: "inset(0% 0% 0% 0% round 0px)", ease: "power1.out", scrollTrigger: st });
+        gsap.fromTo($(".ph i", sec), { scale: 1.18 }, { scale: 1, ease: "power1.out", scrollTrigger: { ...st } });
+        gsap.to($(".over", sec), { opacity: 1, ease: "none", scrollTrigger: { trigger: sec, start: "top 45%", end: "top 5%", scrub: 1 } });
+      });
+    }
   });
 
   // Word-by-word scrub statement

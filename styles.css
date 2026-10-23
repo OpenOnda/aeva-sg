@@ -175,6 +175,7 @@ body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:900
 .expand .over{position:absolute;inset:0;display:flex;align-items:flex-end;padding:0 var(--pad) 8vh;background:linear-gradient(0deg,rgba(19,16,13,.85),transparent 55%);opacity:0}
 .expand .over h2{font-family:var(--serif);font-size:clamp(2.4rem,5.4vw,5.4rem);max-width:13em}
 .expand .over h2 em{font-style:italic;color:var(--gold)}
+@media (max-width:860px){.expand{height:auto;aspect-ratio:3/4;max-height:88svh}.expand .ph{clip-path:inset(10% 9% 10% 9% round 6px);will-change:clip-path}.expand .ph > i{will-change:transform}.expand .over{padding-bottom:6vh}}
 
 /* Slogan + wide feature photo */
 .feature{padding:14vh var(--pad) 10vh;text-align:center}
